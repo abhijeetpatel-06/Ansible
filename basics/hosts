@@ -1,0 +1,5 @@
+[all] # this is a goroup inside this group you can add ips of rhe machines
+root@155.34.45.78 # here you can add ip like this
+
+[production] # you can add multiple groups and run with there name
+  root@ -define_io_here-
