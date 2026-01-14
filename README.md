@@ -1,4 +1,4 @@
-# Ansible
+# Ansible basic architecture 
 All about ansible for Devops
 ansible is most popular tool in industry it is a infrastructure configuration tool which provides seamless configuration to your infrastructure.
 Ansible architecture is very simple you don't need to install or configure ansible to all of your servers you need inay one machine and it can be automatically manage all of your servers easily.
