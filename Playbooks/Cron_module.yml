@@ -1,3 +1,5 @@
+:
+
 # Using this you can run a script on your servers
 ---
 - name: Schedule a weekly log cleanup

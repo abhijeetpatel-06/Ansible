@@ -80,3 +80,5 @@
     - name: Debug all running containers after termination
       debug:
         msg: "All running containers after termination: {{ all_containers_after.stdout_lines }}"
+
+        
