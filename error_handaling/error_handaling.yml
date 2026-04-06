@@ -1,0 +1,29 @@
+#!/root/.ansible/bin/ansible-playbook
+- name: Error handling part 1
+  hosts: all
+  become: yes
+# if you run on Aws user then you need to use this command which is\
+# remote_user: ec2-user
+  tasks:
+    - name: List all files and directories in the current directory
+      command: "ls -l /home"
+      register: ls_output
+      ignore_errors: yes
+      debug:
+        var: ls_output.stdout_lines
+      
+    - name: list files again anoter location
+      command: "ls -l /tmp"
+      register: ls_output2
+      debug:
+        var: ls_output2.stdout_lines
+
+        # this is another way same as above task
+    - name: List all files and directories in the current directory
+      command: "ls -l /home"
+      register: ls_output1
+      ignore_errors: yes
+      debug:
+        var: ls_output1.stdout_lines
+        failed_when: ls_output.rc==2
+        

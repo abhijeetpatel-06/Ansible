@@ -1,0 +1,44 @@
+#!/root/and the direcrory of the ansible playbook if you run directly
+- name: Install and configure Tomcat using Ansible
+  hosts: all
+  become: yes
+
+  vars: 
+    java_version: java-1.8.0-openjdk
+    alt_java_path: /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/java
+    tomcat_version: 9.0.56
+
+  tasks:
+    - name: Update all packages on the system
+      apt:
+       name: "*"
+       state: latest
+
+    - name: Install Java on system
+      apt:
+        name: java-1.8.0-openjdk
+        state: present
+
+    - name: set java alternative
+      alternatives:
+        name: java
+        link: /usr/bin/java
+        path: /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/java
+
+    - name: Download Tomcat tar file
+      get_url:
+        url: https://archive.apache.org/dist/tomcat/tomcat-9/v{{tomcat_version}}/bin/apache-tomcat-9.0.65.tar.gz
+        dest: /tmp/
+         
+    - name: Extract Tomcat tar file
+      unarchive:
+        src: /tmp/apache-tomcat-{{tomcat_version}}.tar.gz
+        dest: /opt/
+        remote_src: yes
+
+
+    - name: rename tomcat directory
+      command: mv /opt/apache-tomcat-{{tomcat_version}} /opt/tomcat
+
+    - name: starting tomcat process
+      shell: nohup/opt/tomcat/bin/startup.sh &

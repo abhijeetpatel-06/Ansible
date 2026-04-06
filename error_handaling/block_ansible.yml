@@ -1,0 +1,34 @@
+#!/root/.ansible/bin/ansible-playbook
+- name: Ansible block example
+  hosts: all
+  become: 'yes'
+
+  tasks:
+    - name: list the directory
+      command: "ls -l /home"
+      become: 'yes'
+      register: ls_output
+    - name: list the directory
+      command: "ls -l /home"
+      become: 'yes'
+      register: ls_output1
+
+    - name: list the directory
+      command: "ls -l /home"
+      register: ls_output3
+     
+       
+    - name: list the directory
+      command: "ls -l /home"
+      become: 'yes'
+      register: ls_output4
+
+
+    - debug:
+        var: ls_output2
+    - debug:
+        var: ls_output1
+    - debug:
+        var: ls_output4
+    - debug:
+        var: ls_output
