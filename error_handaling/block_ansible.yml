@@ -32,3 +32,5 @@
         var: ls_output4
     - debug:
         var: ls_output
+
+        #this is the basic file which can use in data
