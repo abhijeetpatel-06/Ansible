@@ -45,7 +45,7 @@
           - docker-compose
         state: present
       # Install Docker and Docker Compose: Installs Docker packages (docker-ce, docker-ce-cli, containerd.io) 
-      # and Docker Compose from the Docker APT repository.
+      # and Docker Compose from the Docker APT repository. thia is the main step that installs Docker on the machine.
 
     - name: Ensure Docker service is started and enabled
       service:
